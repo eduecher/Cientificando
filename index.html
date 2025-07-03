@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduTech Academy - Cursos Personalizados</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        .hero {
+            padding: 120px 0 80px;
+            text-align: center;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            background: #ff6b6b;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+        }
+
+        .features {
+            background: white;
+            padding: 80px 0;
+        }
+
+        .features h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #333;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .courses {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .courses h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: white;
+        }
+
+        .course-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .category-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 15px;
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .category-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .course-list {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .course-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .course-list li:last-child {
+            border-bottom: none;
+        }
+
+        .whatsapp-button {
+            background: #25d366;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 25px;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+            font-weight: bold;
+        }
+
+        .whatsapp-button:hover {
+            background: #20b954;
+            transform: scale(1.05);
+        }
+
+        .learning-flow {
+            background: white;
+            padding: 80px 0;
+        }
+
+        .learning-flow h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #333;
+        }
+
+        .flow-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .step {
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 15px;
+            position: relative;
+        }
+
+        .step-number {
+            background: #ff6b6b;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .pricing {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            padding: 80px 0;
+            color: white;
+        }
+
+        .pricing h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .pricing-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .price {
+            font-size: 2rem;
+            font-weight: bold;
+            margin: 1rem 0;
+        }
+
+        .price-features {
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+
+        .price-features li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        footer {
+            background: #333;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+        }
+
+        .modal-content {
+            background: white;
+            margin: 15% auto;
+            padding: 2rem;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 500px;
+        }
+
+        .affiliates {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            padding: 80px 0;
+            color: white;
+        }
+
+        .affiliates h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .affiliate-benefits {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .benefit-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .benefit-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .commission-highlight {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .commission-rate {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #ffeb3b;
+        }
+
+        .affiliate-dashboard {
+            background: white;
+            padding: 80px 0;
+            display: none;
+        }
+
+        .dashboard-container {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 20px;
+            padding: 2rem;
+            color: white;
+        }
+
+        .dashboard-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .dashboard-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #ffeb3b;
+        }
+
+        .affiliate-tools {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 15px;
+            margin-top: 2rem;
+        }
+
+        .tool-section {
+            margin-bottom: 2rem;
+        }
+
+        .link-generator {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1rem;
+            border-radius: 10px;
+            margin-top: 1rem;
+        }
+
+        .link-input {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            margin-top: 0.5rem;
+        }
+
+        .copy-button {
+            background: #4caf50;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 0.5rem;
+        }
+
+        .marketing-materials {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .material-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .download-button {
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .features-grid,
+            .course-categories,
+            .flow-steps,
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="#" class="logo">EduTech Academy</a>
+            <ul class="nav-links">
+                <li><a href="#cursos">Cursos</a></li>
+                <li><a href="#metodologia">Metodologia</a></li>
+                <li><a href="#precos">Preços</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Aprenda com Especialistas</h1>
+            <p>Cursos personalizados de Bioinformática, Robótica, Educação, Ciências e Filosofia</p>
+            <a href="#cursos" class="cta-button">Explore os Cursos</a>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="container">
+            <h2>Por que Escolher a EduTech Academy?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Personalização Total</h3>
+                    <p>Cada curso é adaptado às suas necessidades específicas e objetivos de aprendizado.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📚</div>
+                    <h3>Conteúdo Assíncrono</h3>
+                    <p>Aprenda no seu ritmo, com acesso completo ao material após a compra.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💬</div>
+                    <h3>Suporte Direto</h3>
+                    <p>Acesso direto ao instrutor para perguntas e feedback personalizado.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🏆</div>
+                    <h3>Metodologia Eficaz</h3>
+                    <p>Sistema de tarefas e feedback que garante aprendizado efetivo.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="courses" id="cursos">
+        <div class="container">
+            <h2>Nossos Cursos</h2>
+            <div class="course-categories">
+                <div class="category-card">
+                    <h3>🧬 Bioinformática</h3>
+                    <ul class="course-list">
+                        <li>Análise de Sequências de DNA/RNA</li>
+                        <li>Filogenética Molecular</li>
+                        <li>Genômica Comparativa</li>
+                        <li>Bioinformática Estrutural</li>
+                        <li>Análise de Dados Ômicos</li>
+                    </ul>
+                    <a href="#" class="whatsapp-button" onclick="openWhatsApp('bioinformatica')">Saiba Mais</a>
+                </div>
+
+                <div class="category-card">
+                    <h3>🤖 Robótica</h3>
+                    <ul class="course-list">
+                        <li>Fundamentos de Robótica</li>
+                        <li>Arduino e Microcontroladores</li>
+                        <li>Visão Computacional</li>
+                        <li>Robótica Móvel</li>
+                        <li>Inteligência Artificial em Robótica</li>
+                    </ul>
+                    <a href="#" class="whatsapp-button" onclick="openWhatsApp('robotica')">Saiba Mais</a>
+                </div>
+
+                <div class="category-card">
+                    <h3>📚 Educação</h3>
+                    <ul class="course-list">
+                        <li>Metodologias Ativas</li>
+                        <li>Tecnologia na Educação</li>
+                        <li>Neurociência da Aprendizagem</li>
+                        <li>Avaliação Educacional</li>
+                        <li>Educação Inclusiva</li>
+                    </ul>
+                    <a href="#" class="whatsapp-button" onclick="openWhatsApp('educacao')">Saiba Mais</a>
+                </div>
+
+                <div class="category-card">
+                    <h3>🔬 Ciências</h3>
+                    <ul class="course-list">
+                        <li>Metodologia Científica</li>
+                        <li>Estatística Aplicada</li>
+                        <li>Análise de Dados Científicos</li>
+                        <li>Redação Científica</li>
+                        <li>Ética em Pesquisa</li>
+                    </ul>
+                    <a href="#" class="whatsapp-button" onclick="openWhatsApp('ciencias')">Saiba Mais</a>
+                </div>
+
+                <div class="category-card">
+                    <h3>🤔 Filosofia</h3>
+                    <ul class="course-list">
+                        <li>Pensamento Crítico</li>
+                        <li>Lógica e Argumentação</li>
+                        <li>Filosofia da Ciência</li>
+                        <li>Ética e Moral</li>
+                        <li>Filosofia da Mente</li>
+                    </ul>
+                    <a href="#" class="whatsapp-button" onclick="openWhatsApp('filosofia')">Saiba Mais</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="learning-flow" id="metodologia">
+        <div class="container">
+            <h2>Nossa Metodologia</h2>
+            <div class="flow-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Consulta Inicial</h3>
+                    <p>Identificamos suas necessidades e objetivos específicos de aprendizado.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Curso Personalizado</h3>
+                    <p>Criamos um currículo sob medida com conteúdo relevante para você.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Aprendizado Ativo</h3>
+                    <p>Tarefas práticas e exercícios que garantem a fixação do conteúdo.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Feedback Contínuo</h3>
+                    <p>Acompanhamento direto do instrutor com correções e orientações.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <h3>Suporte Pós-Curso</h3>
+                    <p>Acesso a perguntas e respostas por período determinado.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pricing" id="precos">
+        <div class="container">
+            <h2>Planos de Investimento</h2>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Básico</h3>
+                    <div class="price">R$ 297</div>
+                    <ul class="price-features">
+                        <li>Curso personalizado</li>
+                        <li>Material completo</li>
+                        <li>Acesso vitalício</li>
+                        <li>Suporte por 30 dias</li>
+                    </ul>
+                    <a href="#" class="cta-button" onclick="openWhatsApp('basico')">Escolher Plano</a>
+                </div>
+
+                <div class="pricing-card">
+                    <h3>Profissional</h3>
+                    <div class="price">R$ 597</div>
+                    <ul class="price-features">
+                        <li>Curso personalizado</li>
+                        <li>Material completo</li>
+                        <li>Acesso vitalício</li>
+                        <li>Suporte por 90 dias</li>
+                        <li>Sessões de mentoria</li>
+                        <li>Projeto prático</li>
+                    </ul>
+                    <a href="#" class="cta-button" onclick="openWhatsApp('profissional')">Escolher Plano</a>
+                </div>
+
+                <div class="pricing-card">
+                    <h3>Expert</h3>
+                    <div class="price">R$ 997</div>
+                    <ul class="price-features">
+                        <li>Curso personalizado</li>
+                        <li>Material completo</li>
+                        <li>Acesso vitalício</li>
+                        <li>Suporte por 180 dias</li>
+                        <li>Sessões de mentoria</li>
+                        <li>Projeto prático</li>
+                        <li>Certificado</li>
+                        <li>Acesso a comunidade</li>
+                    </ul>
+                    <a href="#" class="cta-button" onclick="openWhatsApp('expert')">Escolher Plano</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contato">
+        <div class="container">
+            <h3>EduTech Academy</h3>
+            <p>Transformando conhecimento em oportunidades</p>
+            <p>WhatsApp: (11) 99999-9999 | Email: contato@edutechacademy.com</p>
+        </div>
+    </footer>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Curso Personalizado</h2>
+            <p>Você será redirecionado para o WhatsApp onde nossa equipe irá:</p>
+            <ul>
+                <li>Entender suas necessidades específicas</li>
+                <li>Criar um currículo personalizado</li>
+                <li>Definir cronograma e metodologia</li>
+                <li>Apresentar o investimento final</li>
+            </ul>
+            <p><strong>Vamos começar sua jornada de aprendizado?</strong></p>
+        </div>
+    </div>
+
+    <script>
+        // Função para abrir WhatsApp com mensagem personalizada
+        function openWhatsApp(categoria) {
+            const modal = document.getElementById('modal');
+            modal.style.display = 'block';
+            
+            // Fechar modal ao clicar no X
+            document.querySelector('.close').onclick = function() {
+                modal.style.display = 'none';
+            }
+            
+            // Fechar modal ao clicar fora
+            window.onclick = function(event) {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            }
+            
+            // Redirecionar para WhatsApp após 3 segundos
+            setTimeout(() => {
+                const mensagens = {
+                    'bioinformatica': 'Olá! Tenho interesse nos cursos de Bioinformática. Gostaria de saber mais sobre a personalização do conteúdo.',
+                    'robotica': 'Olá! Tenho interesse nos cursos de Robótica. Gostaria de saber mais sobre a personalização do conteúdo.',
+                    'educacao': 'Olá! Tenho interesse nos cursos de Educação. Gostaria de saber mais sobre a personalização do conteúdo.',
+                    'ciencias': 'Olá! Tenho interesse nos cursos de Ciências. Gostaria de saber mais sobre a personalização do conteúdo.',
+                    'filosofia': 'Olá! Tenho interesse nos cursos de Filosofia. Gostaria de saber mais sobre a personalização do conteúdo.',
+                    'basico': 'Olá! Tenho interesse no Plano Básico. Gostaria de mais informações.',
+                    'profissional': 'Olá! Tenho interesse no Plano Profissional. Gostaria de mais informações.',
+                    'expert': 'Olá! Tenho interesse no Plano Expert. Gostaria de mais informações.'
+                };
+                
+                const mensagem = mensagens[categoria] || 'Olá! Tenho interesse nos cursos da EduTech Academy.';
+                const telefone = '5511999999999'; // Substitua pelo seu número
+                const url = `https://wa.me/${telefone}?text=${encodeURIComponent(mensagem)}`;
+                
+                window.open(url, '_blank');
+                modal.style.display = 'none';
+            }, 3000);
+        }
+
+        // Smooth scrolling para links internos
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Animação ao scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Aplicar animação aos elementos
+        document.querySelectorAll('.feature-card, .category-card, .step, .pricing-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
